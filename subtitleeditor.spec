@@ -7,6 +7,7 @@ License:	GPL v2
 Group:		Applications
 Source0:	http://kitone.free.fr/subtitleeditor/files/%{name}-%{version}.tar.gz
 # Source0-md5:	36f273236289bb0cf6eb7cbcaf0b8b8b
+Patch0:		%{name}-init_aspell.patch
 URL:		http://kitone.free.fr/subtitleeditor/
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf
@@ -28,6 +29,7 @@ Subtitle Editor jest narzêdziem w GTK+ do edycji napisów.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
