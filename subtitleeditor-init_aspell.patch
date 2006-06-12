@@ -1,0 +1,12 @@
+--- subtitleeditor-0.8.0/src/ASpell.cc.orig	2006-04-19 11:26:06.000000000 +0200
++++ subtitleeditor-0.8.0/src/ASpell.cc	2006-06-12 15:57:13.191500500 +0200
+@@ -39,8 +39,7 @@
+   m_speller = NULL;
+   m_config = NULL;
+ 
+-  //init("francais");
+-  init("fr_FR");
++  init(getenv("LANG"));
+ }
+ 
+ ASpell::~ASpell()
