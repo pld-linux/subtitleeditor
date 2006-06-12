@@ -11,6 +11,7 @@ URL:		http://kitone.free.fr/subtitleeditor/
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	gtkmm-devel >= 2.6
 BuildRequires:	gstreamer-devel >= 0.10
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10
