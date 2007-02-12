@@ -1,5 +1,5 @@
 Summary:	GTK+ tool to edit subtitles
-Summary(pl.UTF-8):   Narzędzie w GTK+ do edycji napisów
+Summary(pl.UTF-8):	Narzędzie w GTK+ do edycji napisów
 Name:		subtitleeditor
 Version:	0.10.1
 Release:	1
