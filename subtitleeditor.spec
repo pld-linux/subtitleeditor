@@ -1,5 +1,5 @@
 Summary:	GTK+ tool to edit subtitles
-Summary(pl):	Narzêdzie w GTK+ do edycji napisów
+Summary(pl.UTF-8):   NarzÄ™dzie w GTK+ do edycji napisÃ³w
 Name:		subtitleeditor
 Version:	0.10.1
 Release:	1
@@ -24,8 +24,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Subtitle Editor is a GTK+ tool to edit subtitles.
 
-%description -l pl
-Subtitle Editor jest narzêdziem w GTK+ do edycji napisów.
+%description -l pl.UTF-8
+Subtitle Editor jest narzÄ™dziem w GTK+ do edycji napisÃ³w.
 
 %prep
 %setup -q
