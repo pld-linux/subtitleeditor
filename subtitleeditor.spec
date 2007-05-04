@@ -2,7 +2,7 @@ Summary:	GTK+ tool to edit subtitles
 Summary(pl.UTF-8):	Narzędzie w GTK+ do edycji napisów
 Name:		subtitleeditor
 Version:	0.13.6
-Release:	0.2
+Release:	1	
 License:	GPL v2
 Group:		Applications
 Source0:	http://kitone.free.fr/subtitleeditor/files/%{name}-%{version}.tar.gz
