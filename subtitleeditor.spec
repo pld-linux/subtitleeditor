@@ -1,13 +1,12 @@
 Summary:	GTK+ tool to edit subtitles
 Summary(pl.UTF-8):	Narzędzie w GTK+ do edycji napisów
 Name:		subtitleeditor
-Version:	0.10.1
-Release:	1
+Version:	0.13.6
+Release:	0.1
 License:	GPL v2
 Group:		Applications
 Source0:	http://kitone.free.fr/subtitleeditor/files/%{name}-%{version}.tar.gz
-# Source0-md5:	e6a38293723811213948391de8e3dab6
-Patch0:		%{name}-init_aspell.patch
+# Source0-md5:	063ffbe94afe832ec46b1666cdf00228
 URL:		http://kitone.free.fr/subtitleeditor/
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf
@@ -16,8 +15,10 @@ BuildRequires:	gettext-devel
 BuildRequires:	gtkmm-devel >= 2.6
 BuildRequires:	gstreamer-devel >= 0.10
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10
+BuildRequires:	gstreamer-audio-effects-good >= 0.10.5
 BuildRequires:	libglademm-devel >= 2.4
 BuildRequires:	libtool
+BuildRequires:	pcre-cxx-devel
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -29,7 +30,6 @@ Subtitle Editor jest narzędziem w GTK+ do edycji napisów.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -57,3 +57,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_desktopdir}/%{name}.desktop
+%{_mandir}/man1/*.1*
