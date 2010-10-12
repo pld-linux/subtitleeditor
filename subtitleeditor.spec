@@ -1,12 +1,15 @@
+#
+# TODO: doesn't build with gl enabled
+#
 Summary:	GTK+ tool to edit subtitles
-Summary(pl.UTF-8):	Narzędzie w GTK+ do edycji napisów
+Summary(pl.UTF-8):	Narzędzie napisane w GTK+ do edycji napisów
 Name:		subtitleeditor
-Version:	0.32.0
+Version:	0.37.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://download.gna.org/subtitleeditor/0.32/%{name}-%{version}.tar.gz
-# Source0-md5:	69c9c5b4cce60ee377f3506c2989401e
+Source0:	http://download.gna.org/subtitleeditor/0.37/%{name}-%{version}.tar.gz
+# Source0-md5:	cc44f2cb46164e0b61c38fe3d1bef2b3
 URL:		http://home.gna.org/subtitleeditor/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -16,6 +19,7 @@ BuildRequires:	glibmm-devel >= 2.16.3
 BuildRequires:	gstreamer-audio-effects-good >= 0.10.5
 BuildRequires:	gstreamer-devel >= 0.10
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10
+BuildRequires:	gstreamermm-devel >= 0.10
 BuildRequires:	gtkglextmm-devel >= 1.2.0
 BuildRequires:	gtkmm-devel >= 2.12.0
 BuildRequires:	intltool >= 0.35.0
@@ -36,7 +40,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Subtitle Editor is a GTK+ tool to edit subtitles.
 
 %description -l pl.UTF-8
-Subtitle Editor jest narzędziem w GTK+ do edycji napisów.
+Subtitle Editor jest narzędziem napisanym w GTK+ do edycji napisów.
 
 %prep
 %setup -q
@@ -48,8 +52,9 @@ Subtitle Editor jest narzędziem w GTK+ do edycji napisów.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure \
-	--enable-gl
+%configure
+#%%configure \
+#	--enable-gl
 
 %{__make}
 
