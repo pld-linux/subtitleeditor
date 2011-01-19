@@ -4,12 +4,12 @@
 Summary:	GTK+ tool to edit subtitles
 Summary(pl.UTF-8):	Narzędzie napisane w GTK+ do edycji napisów
 Name:		subtitleeditor
-Version:	0.37.1
+Version:	0.38.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://download.gna.org/subtitleeditor/0.37/%{name}-%{version}.tar.gz
-# Source0-md5:	cc44f2cb46164e0b61c38fe3d1bef2b3
+Source0:	http://download.gna.org/subtitleeditor/0.38/%{name}-%{version}.tar.gz
+# Source0-md5:	2c4d7d4bd79f45effcea279a2e06ca66
 URL:		http://home.gna.org/subtitleeditor/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -66,9 +66,9 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # remove pt_PT as there is already pt locale
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/pt_PT
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/pt_PT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/plugins/{actions,subtitleformats}/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/plugins/{actions,subtitleformats}/*.la
 
 %find_lang %{name}
 
