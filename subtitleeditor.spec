@@ -33,8 +33,12 @@ BuildRequires:	rpmbuild(macros) >= 1.311
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
-Requires:	gstreamer-imagesink-xv
-Requires:	gstreamer-pango
+Suggests:	gstreamer-aac
+Suggests:	gstreamer-audio-effects-base
+Suggests:	gstreamer-ffmeg
+Suggests:	gstreamer-imagesink-xv
+Suggests:	gstreamer-pango
+Suggests:	gstreamer-plugins-good
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -111,6 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libinsertsubtitle.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libitalicize.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libjoindocument.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libkeyframesmanagement.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libmoveafterprecedingsubtitle.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libmovesubtitles.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libplaintext.so
@@ -119,12 +124,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libreversetextandtranslation.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libscalesubtitles.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libselection.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libsortsubtitles.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libspellchecking.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libsplitdocument.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libsplitsubtitle.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libstyleeditor.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libtextcorrection.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libtimemodemanagement.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libtimingfromplayer.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libtypewriter.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libvideoplayermanagement.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libviewmanager.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libwaveformmanagement.so
@@ -132,9 +140,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libadobeencoredvdntsc.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libadobeencoredvdpal.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libadvancedsubstationalpha.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libbitc.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmicrodvd.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmpl2.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmpsub.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsbv.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsprucestl.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsubrip.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsubstationalpha.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsubtitleeditorproject.so
