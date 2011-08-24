@@ -4,12 +4,12 @@
 Summary:	GTK+ tool to edit subtitles
 Summary(pl.UTF-8):	Narzędzie napisane w GTK+ do edycji napisów
 Name:		subtitleeditor
-Version:	0.38.0
+Version:	0.39.0
 Release:	0.1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://download.gna.org/subtitleeditor/0.38/%{name}-%{version}.tar.gz
-# Source0-md5:	2c4d7d4bd79f45effcea279a2e06ca66
+Source0:	http://download.gna.org/subtitleeditor/0.39/%{name}-%{version}.tar.gz
+# Source0-md5:	17666e652edd27abfd3104a82385f6a8
 URL:		http://home.gna.org/subtitleeditor/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
