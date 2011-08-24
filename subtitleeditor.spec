@@ -106,6 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libconfigurekeyboardshortcuts.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libdialoguize.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libdocumentmanagement.so
+%attr(755,root,root) %{_libdir}/subtitleeditor/plugins/actions/libdocumentsnavigation.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libduplicatesubtitle.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libeditcell.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/liberrorchecking.so
@@ -113,6 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libexternalvideoplayer.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libfindandreplace.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libinsertsubtitle.so
+%attr(755,root,root) %{_libdir}/subtitleeditor/plugins/actions/libinsertsubtitlefromkeyframe.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libitalicize.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libjoindocument.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libkeyframesmanagement.so
@@ -144,6 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmicrodvd.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmpl2.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmpsub.so
+%attr(755,root,root) %{_libdir}/subtitleeditor/plugins/subtitleformats/libsami.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsbv.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsprucestl.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsubrip.so
