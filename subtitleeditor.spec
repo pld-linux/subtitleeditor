@@ -35,6 +35,7 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
 Suggests:	gstreamer-aac
 Suggests:	gstreamer-audio-effects-base
+Suggests:	gstreamer-dts
 Suggests:	gstreamer-ffmpeg
 Suggests:	gstreamer-imagesink-xv
 Suggests:	gstreamer-pango
