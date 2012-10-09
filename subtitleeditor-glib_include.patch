@@ -1,0 +1,12 @@
+diff -dur -x '*~' subtitleeditor-0.40.0.orig/plugins/actions/findandreplace/findandreplace.cc subtitleeditor-0.40.0/plugins/actions/findandreplace/findandreplace.cc
+--- subtitleeditor-0.40.0.orig/plugins/actions/findandreplace/findandreplace.cc	2012-02-22 20:02:05.000000000 +0100
++++ subtitleeditor-0.40.0/plugins/actions/findandreplace/findandreplace.cc	2012-10-09 18:49:54.216977964 +0200
+@@ -26,7 +26,7 @@
+ #include <gui/dialogutility.h>
+ #include <gtkmm_utility.h>
+ #include <widget_config_utility.h>
+-#include <glib/gregex.h>
++#include <glib.h>
+ 
+ /*
+  * FIXME:

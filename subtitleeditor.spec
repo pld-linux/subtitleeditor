@@ -4,12 +4,13 @@
 Summary:	GTK+ tool to edit subtitles
 Summary(pl.UTF-8):	Narzędzie napisane w GTK+ do edycji napisów
 Name:		subtitleeditor
-Version:	0.39.0
-Release:	0.1
+Version:	0.40.0
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://download.gna.org/subtitleeditor/0.39/%{name}-%{version}.tar.gz
-# Source0-md5:	17666e652edd27abfd3104a82385f6a8
+Source0:	http://download.gna.org/subtitleeditor/0.40/%{name}-%{version}.tar.gz
+# Source0-md5:	cb8a5dec7eeea8357ad5a9e977e5d5bd
+Patch0:		%{name}-glib_include.patch
 URL:		http://home.gna.org/subtitleeditor/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -50,6 +51,7 @@ Subtitle Editor jest narzędziem napisanym w GTK+ do edycji napisów.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__intltoolize}
@@ -59,8 +61,6 @@ Subtitle Editor jest narzędziem napisanym w GTK+ do edycji napisów.
 %{__autoheader}
 %{__automake}
 %configure
-#%%configure \
-#	--enable-gl
 
 %{__make}
 
@@ -144,10 +144,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libadobeencoredvdpal.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libadvancedsubstationalpha.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libbitc.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libdcsubtitle.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmicrodvd.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmpl2.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmpsub.so
-%attr(755,root,root) %{_libdir}/subtitleeditor/plugins/subtitleformats/libsami.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsami.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsbv.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsprucestl.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsubrip.so
