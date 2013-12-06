@@ -4,23 +4,23 @@
 Summary:	GTK+ tool to edit subtitles
 Summary(pl.UTF-8):	Narzędzie napisane w GTK+ do edycji napisów
 Name:		subtitleeditor
-Version:	0.40.0
+Version:	0.41.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://download.gna.org/subtitleeditor/0.40/%{name}-%{version}.tar.gz
-# Source0-md5:	cb8a5dec7eeea8357ad5a9e977e5d5bd
-Patch0:		%{name}-glib_include.patch
+Source0:	http://download.gna.org/subtitleeditor/0.41/%{name}-%{version}.tar.gz
+# Source0-md5:	3c21ccd8296001dcb1a02c62396db1b6
 URL:		http://home.gna.org/subtitleeditor/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	enchant-devel >= 1.1.0
 BuildRequires:	gettext-devel
 BuildRequires:	glibmm-devel >= 2.16.3
-BuildRequires:	gstreamer-audio-effects-good >= 0.10.5
-BuildRequires:	gstreamer-devel >= 0.10
-BuildRequires:	gstreamer-plugins-base-devel >= 0.10
-BuildRequires:	gstreamermm-devel >= 0.10
+BuildRequires:	gstreamer0.10-audio-effects-good >= 0.10.5
+BuildRequires:	gstreamer0.10-devel >= 0.10
+BuildRequires:	gstreamer0.10-plugins-base-devel >= 0.10
+BuildRequires:	gstreamer0.10-plugins-base-devel >= 0.10
+BuildRequires:	gstreamermm-devel >= 0.10.6
 BuildRequires:	gtkglextmm-devel >= 1.2.0
 BuildRequires:	gtkmm-devel >= 2.12.0
 BuildRequires:	intltool >= 0.35.0
@@ -51,7 +51,6 @@ Subtitle Editor jest narzędziem napisanym w GTK+ do edycji napisów.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__intltoolize}
@@ -139,6 +138,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libvideoplayermanagement.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libviewmanager.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libwaveformmanagement.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libbestfit.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libclipboard.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libminimizeduration.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libstacksubtitles.so
 %dir %{_libdir}/%{name}/plugins/subtitleformats
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libadobeencoredvdntsc.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libadobeencoredvdpal.so
@@ -148,6 +151,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmicrodvd.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmpl2.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmpsub.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libplaintextformat.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsami.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsbv.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsprucestl.so
