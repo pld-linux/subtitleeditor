@@ -14,7 +14,7 @@ URL:		http://home.gna.org/subtitleeditor/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	enchant-devel >= 1.1.0
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glibmm-devel >= 2.16.3
 BuildRequires:	gstreamer0.10-audio-effects-good >= 0.10.5
 BuildRequires:	gstreamer0.10-devel >= 0.10
