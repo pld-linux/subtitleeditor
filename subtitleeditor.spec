@@ -1,44 +1,48 @@
 #
-# TODO: doesn't build with gl enabled
+# Conditional build:
+%bcond_with	opengl	# OpenGL waveform renderer [not ported to gtkmm 3]
 #
 Summary:	GTK+ tool to edit subtitles
 Summary(pl.UTF-8):	Narzędzie napisane w GTK+ do edycji napisów
 Name:		subtitleeditor
-Version:	0.41.0
+Version:	0.52.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://download.gna.org/subtitleeditor/0.41/%{name}-%{version}.tar.gz
-# Source0-md5:	3c21ccd8296001dcb1a02c62396db1b6
+Source0:	http://download.gna.org/subtitleeditor/0.52/%{name}-%{version}.tar.gz
+# Source0-md5:	d25a3f6966f4d6355485d3dfbcfb437a
+Patch0:		%{name}-flags.patch
+Patch1:		%{name}-format.patch
+Patch2:		%{name}-gcc.patch
 URL:		http://home.gna.org/subtitleeditor/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
-BuildRequires:	enchant-devel >= 1.1.0
+BuildRequires:	enchant-devel >= 1.4.0
 BuildRequires:	gettext-tools
 BuildRequires:	glibmm-devel >= 2.16.3
-BuildRequires:	gstreamer0.10-audio-effects-good >= 0.10.5
-BuildRequires:	gstreamer0.10-devel >= 0.10
-BuildRequires:	gstreamer0.10-plugins-base-devel >= 0.10
-BuildRequires:	gstreamer0.10-plugins-base-devel >= 0.10
-BuildRequires:	gstreamermm-devel >= 0.10.6
-BuildRequires:	gtkglextmm-devel >= 1.2.0
-BuildRequires:	gtkmm-devel >= 2.12.0
+BuildRequires:	gstreamer-devel >= 1.0
+BuildRequires:	gstreamer-plugins-base-devel >= 1.0
+BuildRequires:	gstreamermm-devel >= 1.0
+%{?with_opengl:BuildRequires:	gtkglextmm-devel >= 1.2.0}
+BuildRequires:	gtkmm3-devel >= 3.0
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	iso-codes
-BuildRequires:	libglademm-devel >= 2.4
-BuildRequires:	libstdc++-devel
+BuildRequires:	libstdc++-devel >= 6:4.3
 BuildRequires:	libtool
-BuildRequires:	libxml++-devel >= 2.20.0
+BuildRequires:	libxml++2-devel >= 2.20.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
+Requires:	enchant >= 1.4.0
+Requires:	glibmm >= 2.16.3
+Requires:	libxml++2 >= 2.20.0
 Suggests:	gstreamer-aac
 Suggests:	gstreamer-audio-effects-base
 Suggests:	gstreamer-dts
-Suggests:	gstreamer-ffmpeg
 Suggests:	gstreamer-imagesink-xv
+Suggests:	gstreamer-libav
 Suggests:	gstreamer-pango
 Suggests:	gstreamer-plugins-good
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -51,6 +55,9 @@ Subtitle Editor jest narzędziem napisanym w GTK+ do edycji napisów.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 %{__intltoolize}
@@ -59,7 +66,10 @@ Subtitle Editor jest narzędziem napisanym w GTK+ do edycji napisów.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+CXXFLAGS="%{rpmcxxflags} -std=c++0x"
+%configure \
+	--disable-debug \
+	%{?with_opengl:--enable-gl}
 
 %{__make}
 
@@ -69,10 +79,12 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# API not exported
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libsubtitleeditor.{so,la}
+# dlopened plugins
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/plugins/{actions,subtitleformats}/*.la
 # remove pt_PT as there is already pt locale
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/pt_PT
-
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/plugins/{actions,subtitleformats}/*.la
 
 %find_lang %{name}
 
@@ -93,7 +105,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/subtitleeditor
-%attr(755,root,root) %{_libdir}/libsubtitleeditor.so*
+%attr(755,root,root) %{_libdir}/libsubtitleeditor.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsubtitleeditor.so.0
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
 %dir %{_libdir}/%{name}/plugins/actions
@@ -131,6 +144,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libsplitdocument.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libsplitsubtitle.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libstyleeditor.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libstylize.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libtextcorrection.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libtimemodemanagement.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libtimingfromplayer.so
@@ -146,6 +160,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libadobeencoredvdntsc.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libadobeencoredvdpal.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libadvancedsubstationalpha.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libavidds.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libbitc.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libdcsubtitle.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libmicrodvd.so
@@ -161,7 +176,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libsubviewer2.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/subtitleformats/libtimedtextauthoringformat1.so
 %{_datadir}/%{name}
+%{_datadir}/appdata/subtitleeditor.appdata.xml
 %{_desktopdir}/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/subtitleeditor.*
-%{_pixmapsdir}/*.svg
+%{_pixmapsdir}/subtitleeditor.svg
 %{_mandir}/man1/subtitleeditor.1*

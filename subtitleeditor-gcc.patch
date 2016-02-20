@@ -1,0 +1,10 @@
+--- subtitleeditor-0.52.1/plugins/actions/dialoguize/dialoguize.cc.orig	2015-06-21 23:09:31.000000000 +0200
++++ subtitleeditor-0.52.1/plugins/actions/dialoguize/dialoguize.cc	2016-02-19 22:27:48.430323938 +0100
+@@ -23,6 +23,7 @@
+  *	along with this program. If not, see <http://www.gnu.org/licenses/>.
+  */
+  
++#include <memory>
+ #include <auto_ptr.h>
+ #include "extension/action.h"
+ #include "i18n.h"
