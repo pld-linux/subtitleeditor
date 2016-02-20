@@ -8,3 +8,25 @@
  #include <auto_ptr.h>
  #include "extension/action.h"
  #include "i18n.h"
+--- subtitleeditor-0.52.1/src/utility.h.orig	2015-06-21 23:09:29.000000000 +0200
++++ subtitleeditor-0.52.1/src/utility.h	2016-02-20 10:47:25.319878426 +0100
+@@ -91,7 +91,7 @@
+ 	std::istringstream s(src);
+ 	// return s >> dest != 0;
+ 
+-	bool state = s >> dest != 0;
++	bool state = !!(s >> dest);
+ 
+ 	if(!state)
+ 		se_debug_message(SE_DEBUG_UTILITY, "string:'%s'failed.", src.c_str());
+--- subtitleeditor-0.52.1/src/subtitleview.cc.orig	2015-06-21 23:09:29.000000000 +0200
++++ subtitleeditor-0.52.1/src/subtitleview.cc	2016-02-20 11:24:45.551626891 +0100
+@@ -1363,7 +1363,7 @@
+ 	{
+ 		int num;
+ 		std::istringstream ss(event->string);
+-		bool is_num = ss >> num != 0; 
++		bool is_num = !!(ss >> num);
+ 		// Update only if it's different
+ 		if(is_num != get_enable_search())
+ 			set_enable_search(is_num);
