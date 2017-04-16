@@ -5,15 +5,14 @@
 Summary:	GTK+ tool to edit subtitles
 Summary(pl.UTF-8):	Narzędzie napisane w GTK+ do edycji napisów
 Name:		subtitleeditor
-Version:	0.52.1
-Release:	2
+Version:	0.53.0
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://download.gna.org/subtitleeditor/0.52/%{name}-%{version}.tar.gz
-# Source0-md5:	d25a3f6966f4d6355485d3dfbcfb437a
-Patch0:		%{name}-flags.patch
-Patch1:		%{name}-format.patch
-Patch2:		%{name}-gcc.patch
+Source0:	http://download.gna.org/subtitleeditor/0.53/%{name}-%{version}.tar.gz
+# Source0-md5:	bcd3ce93a4759ed3f99a56dc7e4c4e00
+Patch0:		%{name}-format.patch
+Patch1:		gstreamermm-1.8.patch
 URL:		http://home.gna.org/subtitleeditor/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -57,16 +56,8 @@ Subtitle Editor jest narzędziem napisanym w GTK+ do edycji napisów.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
-%{__intltoolize}
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-CXXFLAGS="%{rpmcxxflags} -std=c++0x"
 %configure \
 	--disable-debug \
 	%{?with_opengl:--enable-gl}
@@ -145,6 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libsplitsubtitle.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libstyleeditor.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libstylize.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libtemplate.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libtextcorrection.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libtimemodemanagement.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/actions/libtimingfromplayer.so
